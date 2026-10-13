@@ -1,0 +1,35 @@
+<article class="student-card">
+  <div class="student-card__image">
+    <img
+      [src]="photoSrc()"
+      [alt]="student().name + ' portrait'"
+      (error)="onImageError()"
+      loading="lazy"
+    />
+  </div>
+
+  <div class="student-card__content">
+    <p class="student-card__faculty">
+      {{ student().faculty }}
+    </p>
+
+    <h3 class="student-card__name">
+      {{ student().name }}
+    </h3>
+
+    <p class="student-card__year">
+      Class of {{ student().classYear }}
+    </p>
+
+    <p class="student-card__quote">
+      "{{ student().quote }}"
+    </p>
+
+    <a
+      class="student-card__link"
+      [routerLink]="['/students', student().id]"
+    >
+      View Profile →
+    </a>
+  </div>
+</article>

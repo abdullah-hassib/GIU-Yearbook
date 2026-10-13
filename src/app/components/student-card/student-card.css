@@ -1,0 +1,75 @@
+
+/* FILE: student-card.css
+   WHAT: Styles the reusable student card.
+   WHY: Keeps card styling separate from the page layout.
+*/
+
+.student-card {
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  background: #fff;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.student-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.student-card__image {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #f3f4f6;
+}
+
+.student-card__image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.student-card__content {
+  padding: 20px;
+}
+
+.student-card__faculty {
+  margin: 0 0 8px;
+  color: #6b7280;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.student-card__name {
+  margin: 0 0 8px;
+  font-size: 1.4rem;
+  color: #111827;
+}
+
+.student-card__year {
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+.student-card__quote {
+  margin: 16px 0;
+  color: #374151;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+.student-card__link {
+  display: inline-block;
+  margin-top: 8px;
+  color: #b91c1c;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.student-card__link:hover {
+  text-decoration: underline;
+}
