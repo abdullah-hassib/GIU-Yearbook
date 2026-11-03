@@ -1,6 +1,8 @@
-import { Component, input, signal, computed } from '@angular/core';
+
+import { Component, input, signal, computed, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Student } from '../../models/student.model';
+import { SavedService } from '../../services/saved.service';
 
 @Component({
   selector: 'app-student-card',
@@ -21,5 +23,20 @@ export class StudentCard {
 
   protected onImageError(): void {
     this.imageFailed.set(true);
+  }
+
+  // New: shared saved-students service
+  private readonly saved = inject(SavedService);
+
+  // New: whether this particular student is saved
+  protected readonly isSaved = computed(() =>
+    this.saved.isSaved(this.student().id)
+  );
+
+  // New: toggle the saved state
+  protected onToggleSaved(event: Event): void {
+    event.preventDefault();
+    event.stopPropagation();
+    this.saved.toggle(this.student().id);
   }
 }
