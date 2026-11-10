@@ -5,7 +5,8 @@
    ===================================================================== */
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-
+import { afterNextRender, inject } from '@angular/core';
+import { AuthService } from './services/auth.service';
 import { Header } from './components/header/header';
 import { TopStrip } from './components/top-strip/top-strip';
 
@@ -18,4 +19,16 @@ import { TopStrip } from './components/top-strip/top-strip';
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
-export class App {}
+export class App {
+  private readonly auth = inject(AuthService);
+
+constructor() {
+  afterNextRender(() => {
+    this.auth.checkSession().subscribe({
+      error: () => {
+        // No valid session: visitor remains signed out.
+      }
+    });
+  });
+}
+}
